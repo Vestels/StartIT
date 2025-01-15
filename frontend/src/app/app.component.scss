@@ -56,6 +56,55 @@ ul {
   flex-direction: row;
 }
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  min-width: 300px;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  overflow: hidden;
+
+    button {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 1rem 1rem 1rem 5rem;
+
+      &:hover {
+        background-color: #0a9396;
+        
+        button {
+          color: #fff;
+        }
+      }
+    }
+}
+
+#profile-button {
+  position: relative;
+}
+
+#profile-button:hover {
+  background-color: #0a9396;
+
+  .dropdown-menu {
+    display: flex;
+}
+}
+
+
 .search {
   display: flex;
   justify-content: space-evenly;

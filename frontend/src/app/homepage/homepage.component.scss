@@ -14,6 +14,11 @@
   gap: 2rem;
   width: auto;
   height: auto;
+  cursor: grab;
+
+    &:active {
+        cursor: grabbing;
+    }
 }
 
 @mixin step-text {
@@ -114,8 +119,8 @@
 }
 
 .infos {
-    display: flex;
-    gap: 3rem;
+  display: flex;
+  gap: 3rem;
 }
 
 .info {
@@ -135,6 +140,50 @@ mat-icon {
   color: #0a9396;
 }
 
+// Employers Section
+
+.employers {
+    position: relative;
+    height: auto;
+    width: 100%;
+    scrollbar-width: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+  
+  .employers > h3 {
+    text-transform: capitalize;
+    font-weight: 400;
+    display: none;
+  }
+  
+  .employers-scroll {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 5rem;
+    user-select: none;
+  }
+  
+  .employers-scroll:hover {
+    animation-play-state: paused;
+  }
+  
+  .employer {
+    width: 80px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: grayscale(100%);
+    user-select: none;
+    cursor: pointer;
+  }
+  
+  .employer:hover {
+    filter: none;
+    scale: 1.1;
+  }
+
 // How To Section
 
 .how-to-section {
@@ -147,9 +196,14 @@ mat-icon {
   height: 550px;
   background-color: #284b63;
   padding: 4rem 0 3rem 0;
-  overflow: auto;
+  overflow-x: auto;
   scrollbar-width: none;
+  -ms-overflow-style: none;
   user-select: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .how-to-section > h1 {
@@ -166,6 +220,7 @@ mat-icon {
   gap: 8rem;
   animation: scroll 30s linear infinite;
   width: max-content;
+  user-select: none;
   transition: transform 0.2s ease;
   will-change: transform;
 }
@@ -239,48 +294,7 @@ mat-icon {
   @include how-to-image();
 }
 
-// Employers Section
-
-.employers {
-    position: relative;
-    height: auto;
-    width: 100%;
-    scrollbar-width: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 3rem;
-  }
-  
-  .employers > h3 {
-    text-transform: capitalize;
-    font-weight: 400;
-    display: none;
-  }
-  
-  .employers-scroll {
-    display: grid;
-    grid-template-columns: repeat(11, 1fr);
-    gap: 5rem;
-  }
-  
-  .employers-scroll:hover {
-    animation-play-state: paused;
-  }
-  
-  .employer {
-    width: 80px;
-    height: auto;
-    transition: all 0.3s ease;
-    filter: grayscale(100%);
-  }
-  
-  .employer:hover {
-    filter: none;
-    scale: 1.1;
-  }
-
-// Section
+// Recommendation Section
 
 .recommendation-section {
   position: relative;
@@ -335,7 +349,7 @@ mat-icon {
 }
 
 .right-card > img {
-    height: 400px;
+  height: 400px;
 }
 
 .recommendation > h3 {
