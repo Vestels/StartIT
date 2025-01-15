@@ -1,250 +1,336 @@
 @mixin how-to-image {
-    min-height: 300px;
-    min-width: 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
+  min-height: 300px;
+  min-width: 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 @mixin step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between !important;
-    gap: 2rem;
-    width: auto;
-    height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 2rem;
+  width: auto;
+  height: auto;
 }
 
 @mixin step-text {
-    width: 400px;
-    height: 100%;
-    background-color: #a9d6e5;
-    // color: #fff;
-    padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-    line-height: 1.5; 
-    font-weight: 300;
-    border-radius: 0 1rem 0 1rem;
+  width: 400px;
+  height: 100%;
+  background-color: #0a9396;
+  color: #fff;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  line-height: 1.5;
+  font-weight: 300;
 }
 
-
 @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+  from {
+    transform: translateX(0);
   }
-
+  to {
+    transform: translateX(-50%);
+  }
+}
 
 // Hero Section
 
 .hero-section {
-    position: relative;
-    top: -10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 700px;
-    width: 100%;
-    background-color: #0a9396;
+  position: relative;
+  top: -10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  width: 100%;
+  background-color: #0a9396;
 }
 
 .fade {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 2;
-    background-color: black;
-    opacity: 0.15;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.15;
 }
 
 .hero-image {
-    position: absolute;
-    bottom: 0;
-    z-index: 1;
-    height: 80%;
-    width: 100%;
-    background-image: url('/images/hero-image2.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    padding-bottom: 3rem;
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  height: 80%;
+  width: 100%;
+  background-image: url("/images/hero-image2.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding-bottom: 3rem;
 }
 
 .hero-text {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    position: absolute;
-    z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  z-index: 3;
 }
 
 .hero-text > h1 {
-    font-size: 2.8rem;
-    color: #fff;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 2.8rem;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 // Informations Section
 
 .informations-section {
-    position: relative;
-    top: -10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    font-size: 2rem;
-    width: 100%;
-    height: 300px;
-    // background-color: #0a9396;
-    // color: #fff;
+  position: relative;
+  top: -10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  font-size: 2rem;
+  width: 100%;
+  height: 300px;
+  // color: #fff;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 300;
 }
 
 .info > span {
-    font-size: 3rem;
-    font-weight: 300;
+  font-size: 3rem;
+  font-weight: 300;
 }
 
 mat-icon {
-    color: #0a9396;
+  color: #0a9396;
 }
-
 
 // How To Section
 
 .how-to-section {
-    position: relative;
-    display: flex;
-    align-items: end;
-    justify-content: space-evenly;
-    top: -10%;
-    width: 100%;
-    height: 550px;
-    padding: 2rem;
-    background-color: #284b63;
-    overflow:auto;
-    scrollbar-width: none;
-    cursor: grab;
-    user-select: none;
+  position: relative;
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+  top: -10%;
+  width: 100%;
+  height: 550px;
+  background-color: #284b63;
+  padding: 4rem 0 3rem 0;
+  overflow: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
 }
 
 .how-to-section:active {
-    cursor: grabbing;
+  cursor: grabbing;
 }
 
 .how-to-section > h1 {
-    position: absolute;
-    color: #fff;
-    text-transform: capitalize;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  color: #fff;
+  text-transform: capitalize;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .scroll-track {
-    display: flex;
-    gap: 8rem;
-    animation: scroll 50s linear infinite;
-    width: max-content;
-    transition: transform 0.2s ease;
-    will-change: transform;
+  display: flex;
+  gap: 8rem;
+  animation: scroll 30s linear infinite;
+  width: max-content;
+  transition: transform 0.2s ease;
+  will-change: transform;
 }
 
 .scroll-track:hover {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .first-step {
-    @include step()
+  @include step();
 }
 
 .first-step > h3 {
-    @include step-text()
+  @include step-text();
 }
 
 .resume-image {
-    background-image: url('/images/resume.png');
-    @include how-to-image()
+  background-image: url("/images/resume.png");
+  @include how-to-image();
 }
 
 .second-step {
-    @include step()
+  @include step();
 }
 
 .second-step > h3 {
-    @include step-text()
+  @include step-text();
 }
 
 .reviews-image {
-    background-image: url('/images/selecting.png');
-    @include how-to-image()
+  background-image: url("/images/selecting.png");
+  @include how-to-image();
 }
 
 .third-step {
-    @include step()
+  @include step();
 }
 
 .third-step > h3 {
-    @include step-text()
+  @include step-text();
 }
 
 .coding-image {
-    background-image: url('/images/coding.png');
-    @include how-to-image()
+  background-image: url("/images/coding.png");
+  @include how-to-image();
 }
 
 .fourth-step {
-    @include step()
+  @include step();
 }
 
 .fourth-step > h3 {
-    @include step-text()
+  @include step-text();
 }
 
 .selecting-image {
-    background-image: url('/images/reviews.png');
-    @include how-to-image()
+  background-image: url("/images/reviews.png");
+  @include how-to-image();
 }
 
 .fifth-step {
-    @include step()
+  @include step();
 }
 
 .fifth-step > h3 {
-    @include step-text()
+  @include step-text();
 }
 
 .contract-image {
-    background-image: url('/images/contract.png');
-    @include how-to-image()
+  background-image: url("/images/contract.png");
+  @include how-to-image();
 }
 
+// Section
 
-// Section 
+.recommendation-section {
+  position: relative;
+  // top: -10%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  width: 100%;
+  padding: 2rem 0 2rem 0;
+}
 
-.section {
-    position: relative;
-    // top: -10%;
-    height: 100vh;
-    width: 100%;
-    padding: 2rem;
+.left-side {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  // border: 2px solid red;
+  justify-content: center;
+}
+
+.left-side > img {
+  height: 300px;
+}
+
+.card {
+  max-width: 400px;
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.avatar-1 {
+    background-image: url('/images/avatar1.png');
+    background-size: cover;
+}
+
+.avatar-2 {
+    background-image: url('/images/avatar2.png');
+    background-size: cover;
+}
+
+.avatar-3 {
+    background-image: url('/images/avatar3.png');
+    background-size: cover;
 }
 
 .right-card {
-    width: 30%;
-    height: 60%;
+  width: 600px;
+  height: 600px;
+}
+
+.right-card > h3 {
+    letter-spacing: .1rem;
+    font-weight: 300;
+}
+
+.right-card > button {
+    background-color: transparent;
+    outline: none;
+    padding: 1rem;
+    text-transform: uppercase;
+    border: 5px solid #0a9396;
+    cursor: pointer;
+    color: #0a9396;
+    overflow: hidden;
+    position: relative;
+    transition: color 0.4s ease;
+    z-index: 1;
+}
+
+.right-card > button:hover {
+    color: #fff;
+}
+
+.right-card > button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a9396;
+    transition: transform 0.4s ease;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    z-index: -1;
+}
+
+.right-card > button:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.review-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+
+// Email Section
+
+.email-section {
+    width: 100%;
+    height: 200px;
     background-color: #0a9396;
 }
