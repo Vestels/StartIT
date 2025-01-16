@@ -10,7 +10,6 @@ import { JobsComponent } from './jobs/jobs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { SavedjobsComponent } from './savedjobs/savedjobs.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -29,7 +28,6 @@ import {MatCardModule} from '@angular/material/card';
     ProfileComponent,
     ApplicationsComponent,
     SavedjobsComponent,
-    DashboardComponent,
     LoginComponent,
     RegisterComponent
   ],

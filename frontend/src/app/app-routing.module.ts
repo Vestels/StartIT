@@ -5,7 +5,6 @@ import { JobsComponent } from './jobs/jobs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ApplicationsComponent } from './applications/applications.component';
 import { SavedjobsComponent } from './savedjobs/savedjobs.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
@@ -16,7 +15,6 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'applications', component: ApplicationsComponent},
   {path: 'saved-jobs', component: SavedjobsComponent},
-  {path: 'dashboard', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: '**', redirectTo: 'main-page', pathMatch: 'full'},
