@@ -1,0 +1,146 @@
+.container {
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    hr {
+        color: #0a9396;
+        width: 100%;
+    }
+
+    .profile-section {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 2rem;
+        width: 50%;
+        min-height: 600px;
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            .infos {
+                display: flex;
+                flex-direction: column;
+                gap: .3rem;
+
+                .name {
+                    font-size: 1.5rem;
+                    letter-spacing: .2rem;
+                    text-transform: capitalize;
+                }
+
+                .email {
+                    font-weight: bold;
+                }
+
+                .profession {
+                    display: flex;
+                    align-items: center;
+                    gap: .5rem;
+
+                    mat-icon {
+                        cursor: pointer;
+                        color: #0a9396;
+                    }
+                }
+            }
+
+            .avatar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-transform: uppercase;
+                font-size: 1.3rem;
+                width: 80px;
+                height: 80px;
+                border-radius: 100%;
+                border: 5px solid #fff;
+                outline: 8px solid #0a9396;
+                background-color: #0a9396;
+                color: #fff;
+                letter-spacing: 0.1rem;
+            }
+        }
+
+        .introduction {
+            textarea {
+                padding: 1rem;
+                resize: none;
+            }
+        }
+
+        .experience {
+            h3 {
+                width: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                mat-icon {
+                    color: #0a9396;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .language, .education, .skills {
+            @extend .experience
+        }
+
+        .documents {
+            width: 100%;
+
+            .custom-file {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                label {
+                    width: auto;
+                    background-color: transparent;
+                    outline: none;
+                    padding: .7rem;
+                    text-transform: uppercase;
+                    border: 5px solid #0a9396;
+                    cursor: pointer;
+                    color: #0a9396;
+                    overflow: hidden;
+                    position: relative;
+                    transition: color 0.4s ease;
+                    z-index: 1;
+                  }
+                  
+                  label:hover {
+                    color: #fff;
+                  }
+                  
+                  label::before {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #0a9396;
+                    transition: transform 0.4s ease;
+                    transform: scaleX(0);
+                    transform-origin: bottom right;
+                    z-index: -1;
+                  }
+                  
+                  label:hover::before {
+                    transform: scaleX(1);
+                    transform-origin: bottom left;
+                  }
+            }
+        }
+
+    }
+}

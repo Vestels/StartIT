@@ -1,1 +1,38 @@
-<p>profile works!</p>
+<div class="container">
+    <div class="profile-section">
+        <div class="profile-header">
+            <div class="avatar">RR</div>
+            <div class="infos">
+                <div class="name">Rokszin Roland</div>
+                <div class="email">rokszinroland&#64;gmail.com</div>
+                <div class="profession">Junior Developer<mat-icon>edit</mat-icon></div>
+            </div>
+        </div>
+        <hr>
+        <div class="introduction">
+            <h3>Introduction:</h3>
+            <textarea name="introduction" id="introduction" rows="8" cols="125" disabled></textarea>
+        </div>
+        <div class="experience">
+            <h3>Experience <mat-icon>add</mat-icon></h3>
+        </div>
+        <div class="language">
+            <h3>Language <mat-icon>add</mat-icon></h3>
+        </div>
+        <div class="education">
+            <h3>Education <mat-icon>add</mat-icon></h3>
+        </div>
+        <div class="skills">
+            <h3>Skills <mat-icon>add</mat-icon></h3>
+        </div>
+        <div class="documents">
+            <h3 class="docs">Documents</h3>
+            <hr>
+            <div class="custom-file">
+                <label class="custom-button" (click)="fileInput.click()">Upload File</label>
+                <span>{{ fileName || 'No file chosen' }}</span>
+                <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+            </div>
+        </div>
+    </div>
+</div>
