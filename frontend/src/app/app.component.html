@@ -5,13 +5,15 @@
             <li><button routerLink="/jobs">Jobs</button></li>
             <li><button routerLink="/applications">Applications</button></li>
             <li><button routerLink="/saved-jobs">Saved Jobs</button></li>
-            <li id="profile-button"><button>Profile <mat-icon>arrow_drop_down</mat-icon></button>
+            <li id="profile-button"><div class="hamburger-menu"><mat-icon>account_box</mat-icon><mat-icon>arrow_drop_down</mat-icon></div>
               <div class="dropdown-menu">
-                <a routerLink="/login"><button>Login / Register</button></a>
-                <a routerLink="/profile"><button>My Profile</button></a>
-                <a routerLink="/applications"><button>Applications</button></a>
-                <a routerLink="/saved-jobs"><button>Saved Jobs</button></a>
-                <a routerLink="/main-page"><button>Sign Out</button></a>
+                <div class="user-name" *ngIf="isLoggedIn">{{currentUser.name}}</div>
+                <a routerLink="/login" class="auth-button" *ngIf="!isLoggedIn"><button>Login / Register<mat-icon>logout</mat-icon></button></a>
+                <a routerLink="/profile"><button>My Profile<mat-icon>person</mat-icon></button></a>
+                <a routerLink="/jobs"><button>Jobs<mat-icon>work_outline</mat-icon></button></a>
+                <a routerLink="/applications"><button>Applications<mat-icon>checklist</mat-icon></button></a>
+                <a routerLink="/saved-jobs"><button>Saved Jobs<mat-icon>favorite_border</mat-icon></button></a>
+                <a routerLink="/main-page" class="auth-button" *ngIf="isLoggedIn"><button (click)="signOut()">Sign Out<mat-icon>logout</mat-icon></button></a>
               </div>
             </li>
         </ul>
@@ -52,7 +54,7 @@
           </mat-select>
         </mat-form-field>
         <button>Search<mat-icon>search</mat-icon></button>
-        <button (click)="toogleExpandValue()">Detailed Search<mat-icon>manage_search</mat-icon></button>
+        <button (click)="toogleExpandValue()">Detailed Search<mat-icon>filter_list</mat-icon></button>
       </div>
     </div>
 </header>

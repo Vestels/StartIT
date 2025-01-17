@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
 
   errorMessage: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router, private appComponent: AppComponent) {}
 
   login() {
     if (!this.email || !this.password) {
@@ -30,6 +31,9 @@ export class LoginComponent {
         (response) => {
           console.log('Successfully logged in.', response);
           localStorage.setItem('Bearer Token', response.token);
+          localStorage.setItem('User', JSON.stringify(response.user));
+          this.authService.loginUser(response.token)
+          this.appComponent.currentUser = response.user
           this.clearForm();
           this.router.navigate(['/jobs']);
         },
