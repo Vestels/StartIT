@@ -1,12 +1,9 @@
 <div class="container">
   <div class="card">
-      <img src="/images/register.png" alt="login">
-      <div class="left-side"></div>
-      <div class="right-side">
           <h1>Register</h1>
           <mat-form-field appearance="outline">
               <mat-label>Register as</mat-label>
-              <mat-select [(value)]="selectedType" (selectionChange)="onTypeChange($event.value)" required>
+              <mat-select [(ngModel)]="selectedType" (selectionChange)="onTypeChange($event.value)" required>
                 <mat-option *ngFor="let type of userTypes" [value]="type">
                   {{ type.viewValue }}
                 </mat-option>
@@ -14,21 +11,25 @@
           </mat-form-field>
           <mat-form-field appearance="outline" *ngIf="selectedType?.value !== 'employer'">
             <mat-label>Your Profession</mat-label>
-            <mat-select [(value)]="selectedJobRole" required>
+            <mat-select [(ngModel)]="selectedJobRole" required>
               <mat-option *ngFor="let jobRole of this.jobService.jobRoles" [value]="jobRole.id">
                 {{ jobRole.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <input type="text" [placeholder]="selectedType?.value === 'employer'? 'Company Name' : 'Name'">
-          <input type="email" placeholder="Email">
-          <input type="password" placeholder="Password">
-          <input type="password" placeholder="Confirm Password">
+          <input type="text" [placeholder]="selectedType?.value === 'employer'? 'Company Name*' : 'Name*'" [(ngModel)]="name" required minlength="3">
+          <input type="email" placeholder="Email*" [(ngModel)]="email" required="">
+          <input type="password" name="password" placeholder="Password*" [(ngModel)]="password" required minlength="8">
+          <input type="password" name="confirmPassword" placeholder="Confirm Password*" [(ngModel)]="confirmPassword" required minlength="8">
   
           <div class="card-bottom">
-              <button type="button">Register</button>
+              <button type="button" (click)="register()">Register</button>
               <p>already have an account? <a routerLink="/login">Login</a></p>
           </div>
-      </div>
+
+          <div class="error-message" *ngIf="errorMessage">
+            {{errorMessage}}
+          </div>
+          <img src="/images/register.png" alt="register">
   </div>
 </div>

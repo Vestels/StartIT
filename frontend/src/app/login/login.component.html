@@ -1,12 +1,18 @@
 <div class="container">
     <div class="card">
         <h1>Login</h1>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required>
 
         <div class="card-bottom">
-            <button type="button">Login</button>
-            <p>haven't registered yet? <a routerLink="/register">Register</a></p>
+            <div>
+                <button type="button" (click)="login()">Login</button>
+                <p>haven't registered yet? <a routerLink="/register">Register</a></p>
+            </div>
+
+            <div class="error-message" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
         </div>
         <img src="/images/login.png" alt="login">
     </div>
