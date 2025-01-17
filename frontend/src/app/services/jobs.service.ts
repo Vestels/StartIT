@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +34,12 @@ export class JobsService {
         console.error('Error fetching filters', err);
       }
     });
+  }
+
+  getFilteredLocations(query: string): Observable<any[]> {
+    const filtered = this.locations.filter(location =>
+      location.name.toLowerCase().includes(query.toLowerCase())
+    );
+    return of(filtered);
   }
 }

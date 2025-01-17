@@ -7,7 +7,6 @@
             <li><button routerLink="/saved-jobs">Saved Jobs</button></li>
             <li id="profile-button"><button>Profile <mat-icon>arrow_drop_down</mat-icon></button>
               <div class="dropdown-menu">
-                <!-- <a routerLink="/dashboard"><button>Dashboard</button></a> -->
                 <a routerLink="/login"><button>Login / Register</button></a>
                 <a routerLink="/profile"><button>My Profile</button></a>
                 <a routerLink="/applications"><button>Applications</button></a>
@@ -18,10 +17,43 @@
         </ul>
     </nav>
     <div class="search" [ngClass]="isExpanded? 'expanded' : '' ">
-        <input type="text" placeholder="Job Name">
-        <input type="text" placeholder="Location">
+
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Education</mat-label>
+          <mat-select multiple>
+              <mat-option *ngFor="let education of this.jobServices.educations" [value]="education">{{education.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Employment</mat-label>
+          <mat-select multiple>
+              <mat-option *ngFor="let employment of this.jobServices.employments" [value]="employment">{{employment.name}}</mat-option>
+          </mat-select>
+        </mat-form-field> 
+        <mat-form-field>
+          <mat-label>Experience</mat-label>
+          <mat-select multiple>
+              <mat-option *ngFor="let experience of this.jobServices.experiences" [value]="experience">{{experience.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>   
+      </div>
+      <div class="row">
+        <mat-form-field>
+          <mat-label>Job Type</mat-label>
+          <mat-select multiple>
+              <mat-option *ngFor="let role of this.jobServices.jobRoles" [value]="role">{{role.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Location</mat-label>
+          <mat-select multiple>
+              <mat-option *ngFor="let location of this.jobServices.locations" [value]="location">{{location.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
         <button>Search<mat-icon>search</mat-icon></button>
         <button (click)="toogleExpandValue()">Detailed Search<mat-icon>manage_search</mat-icon></button>
+      </div>
     </div>
 </header>
 

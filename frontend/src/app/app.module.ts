@@ -23,6 +23,8 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     FormsModule,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()
