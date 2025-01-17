@@ -4,13 +4,21 @@
       <div class="left-side"></div>
       <div class="right-side">
           <h1>Register</h1>
-          <mat-form-field>
+          <mat-form-field appearance="outline">
               <mat-label>Register as</mat-label>
               <mat-select [(value)]="selectedType" (selectionChange)="onTypeChange($event.value)" required>
                 <mat-option *ngFor="let type of userTypes" [value]="type">
                   {{ type.viewValue }}
                 </mat-option>
               </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" *ngIf="selectedType?.value !== 'employer'">
+            <mat-label>Your Profession</mat-label>
+            <mat-select [(value)]="selectedJobRole" required>
+              <mat-option *ngFor="let jobRole of this.jobService.jobRoles" [value]="jobRole.id">
+                {{ jobRole.name }}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
           <input type="text" [placeholder]="selectedType?.value === 'employer'? 'Company Name' : 'Name'">
           <input type="email" placeholder="Email">

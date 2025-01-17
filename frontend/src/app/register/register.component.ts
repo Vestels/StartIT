@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JobsService } from '../services/jobs.service';
 
 interface UserType {
   value: string;
@@ -14,7 +15,10 @@ interface UserType {
 })
 export class RegisterComponent {
 
+  constructor(public jobService: JobsService) {}
+
   selectedType: UserType | null = null;
+  selectedJobRole: string = '';
 
   userTypes: UserType[] = [
     { value: 'employee', viewValue: 'Employee' },
