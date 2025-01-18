@@ -4,17 +4,23 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { UsersService } from './services/users.service';
+import { fader } from './route-animations';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  animations: [fader]
 })
 export class AppComponent implements OnInit {
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
   currentUser: any;
 
-  constructor(public jobsServices: JobsService, private router: Router, public authService: AuthService, private usersService: UsersService) {}  
+  constructor(public jobsService: JobsService, private router: Router, public authService: AuthService, private usersService: UsersService) {}  
   title = 'frontend';
   private routerSubscription: Subscription = new Subscription();
 
@@ -22,7 +28,7 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   ngOnInit():void {
-
+    this.jobsService.loadFilters();
     this.currentUser = JSON.parse(localStorage.getItem('User') || '{}')
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {

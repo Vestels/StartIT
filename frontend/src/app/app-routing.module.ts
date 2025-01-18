@@ -11,13 +11,13 @@ import { authGuard, authRedirectGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'main-page', pathMatch: 'full'},
-  {path: 'jobs', component: JobsComponent},
-  {path: 'main-page', component: HomepageComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
-  {path: 'applications', component: ApplicationsComponent, canActivate: [authGuard]},
-  {path: 'saved-jobs', component: SavedjobsComponent, canActivate: [authGuard]},
-  {path: 'login', component: LoginComponent, canActivate: [authRedirectGuard]},
-  {path: 'register', component: RegisterComponent, canActivate: [authRedirectGuard] },
+  {path: 'jobs', component: JobsComponent, data: {animation: 'JobsPage'}},
+  {path: 'main-page', component: HomepageComponent, data: {animation: 'MainPage'}},
+  {path: 'profile', component: ProfileComponent, canActivate: [authGuard], data: {animation: 'ProfilePage'}},
+  {path: 'applications', component: ApplicationsComponent, canActivate: [authGuard], data: {animation: 'ApplicationsPage'}},
+  {path: 'saved-jobs', component: SavedjobsComponent, canActivate: [authGuard], data: {animation: 'SavedJobsPage'}},
+  {path: 'login', component: LoginComponent, canActivate: [authRedirectGuard], data: {animation: 'LoginPage'}},
+  {path: 'register', component: RegisterComponent, canActivate: [authRedirectGuard], data: {animation: 'RegisterPage'}},
   {path: '**', redirectTo: 'main-page', pathMatch: 'full'},
 ];
 

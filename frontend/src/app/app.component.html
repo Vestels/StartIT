@@ -24,19 +24,19 @@
         <mat-form-field>
           <mat-label>Education</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let education of this.jobsServices.educations" [value]="education">{{education.name}}</mat-option>
+              <mat-option *ngFor="let education of this.jobsService.educations" [value]="education">{{education.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Employment</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let employment of this.jobsServices.employments" [value]="employment">{{employment.name}}</mat-option>
+              <mat-option *ngFor="let employment of this.jobsService.employments" [value]="employment">{{employment.name}}</mat-option>
           </mat-select>
         </mat-form-field> 
         <mat-form-field>
           <mat-label>Experience</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let experience of this.jobsServices.experiences" [value]="experience">{{experience.name}}</mat-option>
+              <mat-option *ngFor="let experience of this.jobsService.experiences" [value]="experience">{{experience.name}}</mat-option>
           </mat-select>
         </mat-form-field>   
       </div>
@@ -44,13 +44,13 @@
         <mat-form-field>
           <mat-label>Job Type</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let role of this.jobsServices.jobRoles" [value]="role">{{role.name}}</mat-option>
+              <mat-option *ngFor="let role of this.jobsService.jobRoles" [value]="role">{{role.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Location</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let location of this.jobsServices.locations" [value]="location">{{location.name}}</mat-option>
+              <mat-option *ngFor="let location of this.jobsService.locations" [value]="location">{{location.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button>Search<mat-icon>search</mat-icon></button>
@@ -59,7 +59,9 @@
     </div>
 </header>
 
-<router-outlet></router-outlet>
+<main [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
 
 <footer class="footer">
     <div class="footer-container">

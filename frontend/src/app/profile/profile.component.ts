@@ -257,6 +257,8 @@ export class ProfileComponent implements OnInit {
           console.log('Updated user:', this.currentUser);
           localStorage.setItem('User', JSON.stringify(user));
           this.appComponent.currentUser = this.currentUser;
+          localStorage.setItem('scrollToTop', 'true');
+          window.location.reload()
         },
         error: (error) => {
           console.error('Error updating user:', error);
@@ -265,8 +267,6 @@ export class ProfileComponent implements OnInit {
     } else {
       console.log('No changes made to the user profile.');
     }
-    localStorage.setItem('scrollToTop', 'true');
-    window.location.reload()
   }
 
   onFileSelected(event: Event): void {
