@@ -1,37 +1,104 @@
 <div class="container">
-    <div class="profile-section">
+    <div *ngIf="isLoading" class="loading-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    <div class="profile-section" *ngIf="!isLoading">
         <div class="profile-header">
-            <div class="avatar">RR</div>
+            <div class="avatar">{{getInitials(currentUser?.name)}}</div>
             <div class="infos">
-                <div class="name">Rokszin Roland</div>
-                <div class="email">rokszinroland&#64;gmail.com</div>
-                <div class="profession">Junior Developer<mat-icon>edit</mat-icon></div>
+                <div class="name" *ngIf="!toggleNameEdit">{{currentUser?.name}}<mat-icon (click)="toggleNameEditForm()">edit</mat-icon></div>
+                <div class="header-input" *ngIf="toggleNameEdit"><input type="text" name="name" id="nameInput" [(ngModel)]="updatedUserName" [placeholder]="currentUser.name"><mat-icon (click)="toggleNameEditForm()">close</mat-icon></div>
+                <div class="email">{{currentUser?.email}}</div>
+                <div class="profession-level">
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{getNameBasedOnId(currentUser?.profession, jobRoles) || 'Select your Profession'}}</mat-label>
+                        <mat-select [(ngModel)]="selectedJobRole">
+                            <mat-option *ngFor="let job of jobRoles" [value]="job">{{job.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>{{getNameBasedOnId(currentUser?.level, experienceLevels) || 'Select your profession level'}}</mat-label>
+                        <mat-select [(ngModel)]="selectedExperienceLevel">
+                            <mat-option *ngFor="let level of experienceLevels" [value]="level">{{level.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
             </div>
         </div>
         <hr>
         <div class="introduction">
             <h3>Introduction:</h3>
-            <textarea name="introduction" id="introduction" rows="8" cols="125" disabled></textarea>
+            <textarea name="introduction" id="introduction" rows="5" cols="90" [(ngModel)]="updatedIntroduction"></textarea>
         </div>
         <div class="experience">
-            <h3>Experience <mat-icon>add</mat-icon></h3>
+            <h3>Experiences<mat-icon (click)="addExperience()">add</mat-icon></h3>
+            <hr>
+            <div class="experience-block" *ngFor="let experience of experiences; let i = index">
+                <div class="remove-button"><mat-icon (click)="removeExperience(i)">clear</mat-icon> Remove</div>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input [(ngModel)]="experiences[i].from" matStartDate placeholder="Start date">
+                      <input [(ngModel)]="experiences[i].to" matEndDate placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+                <input class="base-input" type="text" [(ngModel)]="experiences[i].company" placeholder="Company name">
+                <input class="base-input" type="text" [(ngModel)]="experiences[i].role" placeholder="Job Role">
+                <textarea type="text" rows="8" cols="50" [(ngModel)]="experiences[i].description" placeholder="About Your Job"></textarea>
+            </div>
         </div>
         <div class="language">
-            <h3>Language <mat-icon>add</mat-icon></h3>
+            <h3>Languages<mat-icon (click)="addLanguage()">add</mat-icon></h3>
+            <hr>
+            <div class="language-block" *ngFor="let language of languages; let i = index">
+                <input class="language-input" type="text" name="language" id="language" [(ngModel)]="languages[i].language" placeholder="Language">
+                <input class="language-input" type="text" name="level" id="level" [(ngModel)]="languages[i].proficiency" placeholder="Proficiency">
+                <div class="remove-button"><mat-icon (click)="removeLanguage(i)">clear</mat-icon> Remove</div>
+            </div>
         </div>
         <div class="education">
-            <h3>Education <mat-icon>add</mat-icon></h3>
+            <h3>Education<mat-icon (click)="addEducation()">add</mat-icon></h3>
+            <hr>
+            <div class="education-block" *ngFor="let education of educations; let i = index">
+                <div class="remove-button"><mat-icon (click)="removeEducation(i)">clear</mat-icon> Remove</div>
+                <input class="base-input" type="text" [(ngModel)]="education.institution" placeholder="Institution name">
+                <mat-form-field appearance="outline">
+                    <mat-label>{{getNameBasedOnId(education.degree, userEducations) || 'Degree'}}</mat-label>
+                    <mat-select [(ngModel)]="education.degree">
+                        <mat-option *ngFor="let degree of userEducations" [value]="degree">{{degree.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input [(ngModel)]="education.from" matStartDate placeholder="Start date">
+                      <input [(ngModel)]="education.to" matEndDate placeholder="End date">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+            </div>
         </div>
         <div class="skills">
-            <h3>Skills <mat-icon>add</mat-icon></h3>
+            <h3>Skills <mat-icon (click)="addSkill()">add</mat-icon></h3>
+            <hr>
+            <div class="skill-block" *ngFor="let skill of skills; let i = index">
+                <div class="remove-button"><mat-icon (click)="removeSkill(i)">clear</mat-icon> Remove</div>
+                <input class="base-input" type="text" name="skill" id="skill" [(ngModel)]="skill.name" placeholder="Add a skill" (keydown.enter)="addSkill()">
+            </div>
         </div>
         <div class="documents">
             <h3 class="docs">Documents</h3>
             <hr>
             <div class="custom-file">
-                <label class="custom-button" (click)="fileInput.click()">Upload File</label>
-                <span>{{ fileName || 'No file chosen' }}</span>
-                <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+                <div>
+                    <label class="custom-button" (click)="fileInput.click()">Upload File</label>
+                    <span>{{ fileName || 'No file chosen' }}</span>
+                    <input type="file" #fileInput (change)="onFileSelected($event)" hidden />
+                </div>
+                <button type="button" (click)="updateUser()">Save Changes</button>
             </div>
         </div>
     </div>

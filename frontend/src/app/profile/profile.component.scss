@@ -10,7 +10,19 @@
     hr {
         color: #0a9396;
         width: 100%;
+        margin: 0;
+        margin-bottom: 3rem;
     }
+
+    .loading-spinner {
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+      }
 
     .profile-section {
         display: flex;
@@ -20,20 +32,50 @@
         width: 50%;
         min-height: 600px;
 
-        .profile-header {
+        .remove-button {
             display: flex;
             align-items: center;
+            gap: .3rem;
+    
+            mat-icon {
+                color: #0a9396;
+                cursor: pointer;
+            }
+        }
+
+        .profile-header {
+            width: 100%;
+            display: flex;
+            align-items: start;
             gap: 2rem;
+
+            .profession-level {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
 
             .infos {
                 display: flex;
                 flex-direction: column;
-                gap: .3rem;
+                align-items: start;
+                justify-content: start;
+                gap: .5rem;
 
                 .name {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: auto;
                     font-size: 1.5rem;
                     letter-spacing: .2rem;
+                    gap: 1rem;
                     text-transform: capitalize;
+
+                    mat-icon {
+                        cursor: pointer;
+                        color: #0a9396;
+                    }
                 }
 
                 .email {
@@ -44,6 +86,30 @@
                     display: flex;
                     align-items: center;
                     gap: .5rem;
+
+                    mat-icon {
+                        cursor: pointer;
+                        color: #0a9396;
+                    }
+                }
+
+                mat-form-field {
+                    width: 300px;
+                    margin-top: .5rem;
+                }
+
+                .header-input {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    #nameInput {
+                        width: 265px;
+                        height: 40px;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        letter-spacing: .1rem;
+                    }
 
                     mat-icon {
                         cursor: pointer;
@@ -77,6 +143,7 @@
         }
 
         .experience {
+            width: 100%;
             h3 {
                 width: 200px;
                 display: flex;
@@ -88,18 +155,81 @@
                     cursor: pointer;
                 }
             }
+
+            .experience-block {
+                margin-top: 3rem;
+                display: flex;
+                align-items: start;
+                flex-direction: column;
+                gap: 1rem;
+
+                .base-input {
+                    width: 350px;
+                    height: 50px;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    text-transform: capitalize;
+                }
+
+                textarea {
+                    width: 350px;
+                    padding: 1rem;
+                    resize: none;
+                    text-transform: capitalize;
+                }
+
+                mat-form-field {
+                    width: 386px;
+                    margin-top: .5rem;
+                }
+
+            }
+
+            .language-block {
+                display: flex;
+                gap: 1rem;
+
+                .language-input {
+                    display: flex;
+                    align-items: center;
+                    text-transform: capitalize;
+                    width: 200px;
+                    height: 50px;
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                    margin-bottom: 1rem;
+                }
+            }
+
+            .education-block {
+                @extend .experience-block;
+
+                mat-form-field {
+                    width: 386px;
+                }
+            }
+
+            .skill-block {
+                @extend .experience-block;
+                flex-direction: row-reverse;
+                align-items: center;
+                justify-content: start;
+                margin: .3rem;
+            }
         }
 
         .language, .education, .skills {
-            @extend .experience
+            @extend .experience;
         }
 
         .documents {
             width: 100%;
 
             .custom-file {
+                margin-top: 2rem;
                 display: flex;
                 align-items: center;
+                justify-content: space-between;
                 gap: 1rem;
 
                 label {
@@ -138,6 +268,20 @@
                   label:hover::before {
                     transform: scaleX(1);
                     transform-origin: bottom left;
+                  }
+
+                  span {
+                    margin-left: 1rem;
+                  }
+
+                  button {
+                    @extend label;
+                    border: 5px solid #284b63;
+                    color: #284b63;
+
+                    &::before {
+                        background-color: #284b63;
+                    }
                   }
             }
         }

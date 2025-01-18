@@ -37,10 +37,10 @@ export class AuthService {
     this.isLoggedInSubject.next(true);
   }
 
-  // Kijelentkezés
   signOut(): void {
-    window.location.reload();
-    localStorage.clear()
+    console.log('Signing out...');
+    localStorage.clear();
+    console.log('localStorage after clear:', localStorage);
     this.isLoggedInSubject.next(false);
   }
 

@@ -3,6 +3,7 @@ import { JobsService } from './services/jobs.service';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './services/auth.service';
+import { UsersService } from './services/users.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent implements OnInit {
   currentUser: any;
 
-  constructor(public jobServices: JobsService, private router: Router, public authService: AuthService) {}  
+  constructor(public jobsServices: JobsService, private router: Router, public authService: AuthService, private usersService: UsersService) {}  
   title = 'frontend';
   private routerSubscription: Subscription = new Subscription();
 
@@ -21,8 +22,8 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
 
   ngOnInit():void {
+
     this.currentUser = JSON.parse(localStorage.getItem('User') || '{}')
-    this.jobServices.loadFilters();
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isExpanded = false
@@ -38,8 +39,10 @@ export class AppComponent implements OnInit {
     this.isExpanded = !this.isExpanded
   }
 
-  signOut() {
-    this.currentUser = null
+  signOut(): void {
+    console.log('Calling signOut...');
+    this.currentUser = '';
     this.authService.signOut();
+    console.log('User signed out');
   }
 }

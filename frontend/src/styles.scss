@@ -1,2 +1,10 @@
+@use '@angular/material' as mat;
+
+:root {
+    @include mat.progress-spinner-overrides((
+      active-indicator-color: #0a9396,
+    ));
+  }
+
 html, body { height: 100%; scroll-behavior: smooth; scrollbar-width:none;}
 body { margin: 0; font-family: "Montserrat", serif; }

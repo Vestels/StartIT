@@ -9,11 +9,11 @@
               <div class="dropdown-menu">
                 <div class="user-name" *ngIf="isLoggedIn">{{currentUser.name}}</div>
                 <a routerLink="/login" class="auth-button" *ngIf="!isLoggedIn"><button>Login / Register<mat-icon>logout</mat-icon></button></a>
-                <a routerLink="/profile"><button>My Profile<mat-icon>person</mat-icon></button></a>
                 <a routerLink="/jobs"><button>Jobs<mat-icon>work_outline</mat-icon></button></a>
+                <a routerLink="/profile"><button>My Profile<mat-icon>person</mat-icon></button></a>
                 <a routerLink="/applications"><button>Applications<mat-icon>checklist</mat-icon></button></a>
                 <a routerLink="/saved-jobs"><button>Saved Jobs<mat-icon>favorite_border</mat-icon></button></a>
-                <a routerLink="/main-page" class="auth-button" *ngIf="isLoggedIn"><button (click)="signOut()">Sign Out<mat-icon>logout</mat-icon></button></a>
+                <a routerLink="/main-page" class="auth-button" *ngIf="isLoggedIn" (click)="signOut()"><button>Sign Out<mat-icon>logout</mat-icon></button></a>
               </div>
             </li>
         </ul>
@@ -24,19 +24,19 @@
         <mat-form-field>
           <mat-label>Education</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let education of this.jobServices.educations" [value]="education">{{education.name}}</mat-option>
+              <mat-option *ngFor="let education of this.jobsServices.educations" [value]="education">{{education.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Employment</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let employment of this.jobServices.employments" [value]="employment">{{employment.name}}</mat-option>
+              <mat-option *ngFor="let employment of this.jobsServices.employments" [value]="employment">{{employment.name}}</mat-option>
           </mat-select>
         </mat-form-field> 
         <mat-form-field>
           <mat-label>Experience</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let experience of this.jobServices.experiences" [value]="experience">{{experience.name}}</mat-option>
+              <mat-option *ngFor="let experience of this.jobsServices.experiences" [value]="experience">{{experience.name}}</mat-option>
           </mat-select>
         </mat-form-field>   
       </div>
@@ -44,13 +44,13 @@
         <mat-form-field>
           <mat-label>Job Type</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let role of this.jobServices.jobRoles" [value]="role">{{role.name}}</mat-option>
+              <mat-option *ngFor="let role of this.jobsServices.jobRoles" [value]="role">{{role.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
           <mat-label>Location</mat-label>
           <mat-select multiple>
-              <mat-option *ngFor="let location of this.jobServices.locations" [value]="location">{{location.name}}</mat-option>
+              <mat-option *ngFor="let location of this.jobsServices.locations" [value]="location">{{location.name}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button>Search<mat-icon>search</mat-icon></button>

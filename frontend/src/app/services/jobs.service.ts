@@ -17,12 +17,12 @@ export class JobsService {
   jobRoles: any[] = []
   locations: any[] = []
 
-  getFilter(): Observable<any> {
+  getFilters(): Observable<any> {
     return this.http.get<any>('http://localhost:3000/api/filters');
   }
 
-  loadFilters(): void {
-    this.getFilter().subscribe({
+  async loadFilters(): Promise<void> {
+    this.getFilters().subscribe({
       next: (data) => {
         this.educations = data.educations;
         this.employments = data.employments;
@@ -34,12 +34,5 @@ export class JobsService {
         console.error('Error fetching filters', err);
       }
     });
-  }
-
-  getFilteredLocations(query: string): Observable<any[]> {
-    const filtered = this.locations.filter(location =>
-      location.name.toLowerCase().includes(query.toLowerCase())
-    );
-    return of(filtered);
   }
 }
