@@ -88,11 +88,24 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
+    let professionName = null;
+    if (user.profession) {
+      const { data: professionData, error: professionError } = await supabase
+        .from("Job Roles")
+        .select("name")
+        .eq("id", user.profession)
+        .single();
+
+      if (professionData) {
+        professionName = professionData.name;
+      }
+    }
+
     const token = jwt.sign({ email, userType: user.user_type }, SECRET_KEY, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
 
-    return res.status(201).json({ token });
+    return res.status(201).json({ token, user: {...user, professionName} });
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Error during login" });
