@@ -1,3 +1,9 @@
+@media screen and (max-width: 1024px) {
+    .job {
+        width: 80% !important;
+    }
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -11,8 +17,8 @@
     .job {
         background-color: rgba(10, 147, 150, 0.05);
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        width: 900px;
-        min-height: 300px;
+        width: 50%;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -62,12 +68,15 @@
         }
 
         .badges {
+            max-width: 100%;
             display: flex;
+            flex-wrap: wrap;
             gap: 1rem;
 
             .badge {
+
+                align-items: center;
                 padding: 1rem;
-                // border-radius: 25px;
                 background-color: #0a9396;
                 color: #fff;
             }

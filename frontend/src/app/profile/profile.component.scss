@@ -1,3 +1,60 @@
+@media screen and (max-width: 1480px) {
+    .profile-section {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 930px) {
+
+    .profile-header, .introduction {
+        width: 100% !important;
+    }
+
+    .profile-header, .experience-block, .language-block, .education-block, .skill-block {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    .profile-section {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .profession-level {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .language-block {
+        flex-direction: column !important;
+        gap: .2rem !important;
+        margin-bottom: 3rem;
+    }
+}
+
+@media screen and (max-width: 525px) {
+
+    .custom-file {
+        flex-direction: column !important;
+        gap: 5rem !important;
+        align-items: start !important;
+    }
+    * {
+        mat-form-field {
+            width: 350px!important;
+        }
+
+        textarea, input {
+            width: 315px !important;
+        }
+    }
+}
+
+
+
 .container {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -18,6 +75,7 @@
         display: flex;
         flex-direction: column;
         align-items: start;
+        justify-content: center;
         gap: 2rem;
         width: 50%;
         min-height: 600px;
@@ -34,7 +92,7 @@
         }
 
         .profile-header {
-            width: 100%;
+            width: max-content;
             display: flex;
             align-items: start;
             gap: 2rem;
@@ -127,6 +185,7 @@
 
         .introduction {
             textarea {
+                width: 90% !important;
                 padding: 1rem;
                 resize: none;
             }

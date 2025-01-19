@@ -2,10 +2,10 @@
     <nav>
         <h1 routerLink="/main-page">Start<span>IT</span><mat-icon>hub</mat-icon></h1>
         <ul>
-            <li><button routerLink="/jobs">Jobs</button></li>
-            <li><button routerLink="/applications" *ngIf="isVisible">Applications</button></li>
-            <li><button routerLink="/saved-jobs" *ngIf="isVisible">Saved Jobs</button></li>
-            <li *ngIf="!isVisible" (click)="isJobBoardOpen = true"><button><b>Post a Job</b></button></li>
+            <li class="desktop-nav"><button routerLink="/jobs">Jobs</button></li>
+            <li class="desktop-nav"><button routerLink="/applications" *ngIf="isVisible">Applications</button></li>
+            <li class="desktop-nav"><button routerLink="/saved-jobs" *ngIf="isVisible">Saved Jobs</button></li>
+            <li class="desktop-nav" *ngIf="!isVisible" (click)="isJobBoardOpen = true"><button><b>Post a Job</b></button></li>
             <li id="profile-button"><div class="hamburger-menu"><mat-icon>account_box</mat-icon><mat-icon>arrow_drop_down</mat-icon></div>
               <div class="dropdown-menu">
                 <div class="user-name" *ngIf="isLoggedIn">{{currentUser?.user?.name || currentUser?.user?.company_name}}</div>
@@ -55,8 +55,10 @@
               <mat-option *ngFor="let location of this.jobsService.locations" [value]="location">{{location.name}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button>Search<mat-icon>search</mat-icon></button>
-        <button (click)="toggleExpandValue()">Detailed Search<mat-icon>filter_list</mat-icon></button>
+        <div class="search-buttons">
+          <button id="search-btn">Search<mat-icon>search</mat-icon></button>
+          <button id="detailed-btn" (click)="toggleExpandValue()">Detailed Search<mat-icon>filter_list</mat-icon></button>
+        </div>
       </div>
       
     </div>
@@ -67,7 +69,7 @@
   <div class="job-post-block">
     <div class="board">
       <h1>Create Job <mat-icon>work</mat-icon></h1>
-      <div class="company-name"><mat-icon>apartment</mat-icon><b>{{currentUser?.user.company_name}}</b></div>
+      <div class="company-name"><mat-icon>apartment</mat-icon><b>{{currentUser?.user?.company_name}}</b></div>
       <hr>
       <h3>Job Description:</h3>
       <textarea [(ngModel)]="jobDescription" name="aboutjob" id="aboutjob" placeholder="About the job" rows="10" cols="50" required></textarea>

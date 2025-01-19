@@ -9,7 +9,7 @@
                 <h5><mat-icon>place</mat-icon>{{job.Location.name}}</h5>
                 <h5><mat-icon>apartment</mat-icon>{{job.Employer.company_name}}</h5>
             </div>
-                <mat-icon class="save-button" *ngIf="!currentUser.company_name">bookmark_border</mat-icon>
+                <mat-icon class="save-button" *ngIf="!currentUser?.company_name">bookmark_border</mat-icon>
         </div>
         <div class="badges">
             <div class="badge">{{job.Experience.name}}</div>
@@ -22,7 +22,7 @@
                 {{getTruncatedText(job.Description)}}
             </div>
             <div class="job-footer">
-                <div><button class="apply-button" *ngIf="!currentUser.company_name">Apply to Job</button></div>
+                <div><button class="apply-button" *ngIf="!currentUser?.company_name">Apply to Job</button></div>
                 <div class="created">{{formatDate(job.created_at)}}</div>
             </div>
         </div>

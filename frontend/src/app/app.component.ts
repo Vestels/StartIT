@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
 
     this.authService.currentUser$.subscribe((user) => {
       this.currentUser = user;
-      if (user && user.user.company_name) {
+      if (user && user?.user?.company_name) {
         this.isVisible = false;
       }
     });
