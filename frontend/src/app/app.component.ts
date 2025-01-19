@@ -113,11 +113,12 @@ export class AppComponent implements OnInit {
     
     console.log('Creating job...', job);
 
-    this.jobsService.crateJob(job).subscribe({
+    this.jobsService.createJob(job).subscribe({
       next: (data) => {
         console.log('Job created', data);
         this.isAnyFieldsEmpty = false;
         this.closeJobBoard();
+        window.location.reload()
       },
       error: (err) => {
         console.error('Error creating job', err);

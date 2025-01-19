@@ -1,4 +1,123 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    gap: 5rem;
     width: 100%;
     min-height: 100vh;
+
+    .job {
+        background-color: rgba(10, 147, 150, 0.05);
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        width: 900px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+        cursor: pointer;
+        padding: 2rem;
+
+        hr {
+            width: 100%;
+            margin-top: 0;
+        }
+
+        .job-header {
+            width: auto;
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            .company_infos {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                color: #284b63;
+            }
+
+            h3, h5 {
+                margin: 0;
+                display: flex;
+                align-items: end;
+                gap: .5rem;
+                text-transform: capitalize;
+            }
+
+            mat-icon {
+                color: #284b63;
+            }
+
+            .save-button {
+                transition: all .3s ease;
+            }
+
+
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+
+            .badge {
+                padding: 1rem;
+                // border-radius: 25px;
+                background-color: #0a9396;
+                color: #fff;
+            }
+        }
+
+        .job-body {
+            line-height: 1.5;
+
+            .apply-button {
+                width: 150px;
+                height: 40px;
+                background-color: #284b63;
+                color: #fff;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                transition: all .3s ease;
+                text-transform: uppercase;
+                letter-spacing: .1rem;
+
+                &:hover {
+                    background-color: #0a9396;
+                }
+            }
+        }
+
+        .job-footer {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 3rem;
+
+            .apply-button {
+                width: 150px;
+                height: 40px;
+                background-color: #284b63;
+                color: #fff;
+                outline: none;
+                border: none;
+                margin-top: 3rem;
+                cursor: pointer;
+                transition: all .3s ease;
+                text-transform: uppercase;
+                letter-spacing: .1rem;
+
+                &:hover {
+                    background-color: #0a9396;
+                }
+            }
+        }
+    }
 }

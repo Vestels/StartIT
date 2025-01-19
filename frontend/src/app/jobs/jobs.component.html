@@ -1,3 +1,30 @@
 <div class="container">
-    
+    <div *ngIf="isLoading" class="loading-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="job" *ngFor="let job of jobs; let i = index">
+        <div class="job-header">
+            <div class="company_infos">
+                <h3>{{job.Role.name}}</h3>
+                <h5><mat-icon>place</mat-icon>{{job.Location.name}}</h5>
+                <h5><mat-icon>apartment</mat-icon>{{job.Employer.company_name}}</h5>
+            </div>
+                <mat-icon class="save-button" *ngIf="!currentUser.company_name">bookmark_border</mat-icon>
+        </div>
+        <div class="badges">
+            <div class="badge">{{job.Experience.name}}</div>
+            <div class="badge">{{job.Education.name}}</div>
+            <div class="badge">{{job.Employment.name}}</div>
+        </div>
+        <hr>
+        <div class="job-body">
+            <div class="description">
+                {{getTruncatedText(job.Description)}}
+            </div>
+            <div class="job-footer">
+                <div><button class="apply-button" *ngIf="!currentUser.company_name">Apply to Job</button></div>
+                <div class="created">{{formatDate(job.created_at)}}</div>
+            </div>
+        </div>
+    </div>
 </div>

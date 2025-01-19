@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'main-page', pathMatch: 'full'},
   {path: 'jobs', component: JobsComponent, data: {animation: 'JobsPage'}},
   {path: 'main-page', component: HomepageComponent, data: {animation: 'MainPage'}},
-  {path: 'profile', component: ProfileComponent, canActivate: [authGuard], data: {animation: 'ProfilePage'}},
+  {path: 'profile', component: ProfileComponent, canActivate: [authGuard, employerRedirectGuard], data: {animation: 'ProfilePage'}},
   {path: 'applications', component: ApplicationsComponent, canActivate: [authGuard, employerRedirectGuard], data: {animation: 'ApplicationsPage'}},
   {path: 'saved-jobs', component: SavedjobsComponent, canActivate: [authGuard, employerRedirectGuard], data: {animation: 'SavedJobsPage'}},
   {path: 'login', component: LoginComponent, canActivate: [authRedirectGuard], data: {animation: 'LoginPage'}},

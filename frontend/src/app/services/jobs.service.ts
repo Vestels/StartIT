@@ -38,7 +38,16 @@ export class JobsService {
     });
   }
 
-  crateJob(job: any): Observable<any> {
+  getAllJobs(): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/jobs`);
+  }
+
+  searchJobs(filters: any): Observable<any> {
+    const params = new URLSearchParams(filters).toString();
+    return this.http.get<any>(`${this.apiBaseUrl}/jobs/search?${params}`);
+  }
+
+  createJob(job: any): Observable<any> {
     const token = localStorage.getItem('Bearer Token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -25,7 +25,7 @@
       <div class="row">
         <mat-form-field>
           <mat-label>Education</mat-label>
-          <mat-select multiple>
+          <mat-select  multiple>
               <mat-option *ngFor="let education of this.jobsService.educations" [value]="education">{{education.name}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -45,7 +45,7 @@
       <div class="row">
         <mat-form-field>
           <mat-label>Job Type</mat-label>
-          <mat-select multiple>
+          <mat-select iple>
               <mat-option *ngFor="let role of this.jobsService.jobRoles" [value]="role">{{role.name}}</mat-option>
           </mat-select>
         </mat-form-field>
