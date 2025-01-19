@@ -43,20 +43,10 @@
   }
 }
 
-@keyframes scrollForward {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(50%);
-  }
-}
-
 // Hero Section
 
 .hero-section {
   position: relative;
-  // top: -10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -105,7 +95,6 @@
 
 .informations-section {
   position: relative;
-  // top: -10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,7 +104,6 @@
   height: 400px;
   gap: 5rem;
   padding-top: 3rem;
-  // color: #fff;
 }
 
 .infos {
@@ -195,10 +183,10 @@ mat-icon {
   height: 550px;
   background-color: #284b63;
   padding: 4rem 0 3rem 0;
-  overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   user-select: none;
+  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     display: none;
@@ -219,11 +207,15 @@ mat-icon {
   gap: 8rem;
   width: max-content;
   user-select: none;
-  transition: transform 0.5s ease;
+  transition: transform 0.2s ease;
   will-change: transform;
-  overflow-x: auto;
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  cursor: grab;
+  animation: scroll 20s linear infinite;
+}
+
+.scroll-track:active {
+  cursor: grabbing;
 }
 
 .scroll-track:hover {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
@@ -8,6 +8,8 @@ import { Observable, of } from 'rxjs';
 export class JobsService {
 
   constructor(private http: HttpClient) {}
+
+  apiBaseUrl = 'http://localhost:3000/api';
 
   jobs: any[] = []
 
@@ -18,7 +20,7 @@ export class JobsService {
   locations: any[] = []
 
   getFilters(): Observable<any> {
-    return this.http.get<any>('http://localhost:3000/api/filters');
+    return this.http.get<any>(`${this.apiBaseUrl}/filters`);
   }
 
   async loadFilters(): Promise<void> {
@@ -34,5 +36,14 @@ export class JobsService {
         console.error('Error fetching filters', err);
       }
     });
+  }
+
+  crateJob(job: any): Observable<any> {
+    const token = localStorage.getItem('Bearer Token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    })
+    return this.http.post<any>(`${this.apiBaseUrl}/jobs`, job, { headers });
   }
 }

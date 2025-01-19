@@ -3,16 +3,18 @@
         <h1 routerLink="/main-page">Start<span>IT</span><mat-icon>hub</mat-icon></h1>
         <ul>
             <li><button routerLink="/jobs">Jobs</button></li>
-            <li><button routerLink="/applications">Applications</button></li>
-            <li><button routerLink="/saved-jobs">Saved Jobs</button></li>
+            <li><button routerLink="/applications" *ngIf="isVisible">Applications</button></li>
+            <li><button routerLink="/saved-jobs" *ngIf="isVisible">Saved Jobs</button></li>
+            <li *ngIf="!isVisible" (click)="isJobBoardOpen = true"><button><b>Post a Job</b></button></li>
             <li id="profile-button"><div class="hamburger-menu"><mat-icon>account_box</mat-icon><mat-icon>arrow_drop_down</mat-icon></div>
               <div class="dropdown-menu">
-                <div class="user-name" *ngIf="isLoggedIn">{{currentUser.name}}</div>
+                <div class="user-name" *ngIf="isLoggedIn">{{currentUser?.user?.name || currentUser?.user?.company_name}}</div>
                 <a routerLink="/login" class="auth-button" *ngIf="!isLoggedIn"><button>Login / Register<mat-icon>logout</mat-icon></button></a>
+                <a *ngIf="!isVisible" (click)="isJobBoardOpen = true"><button><b>Post a Job</b><mat-icon>add</mat-icon></button></a>
                 <a routerLink="/jobs"><button>Jobs<mat-icon>work_outline</mat-icon></button></a>
-                <a routerLink="/profile"><button>My Profile<mat-icon>person</mat-icon></button></a>
-                <a routerLink="/applications"><button>Applications<mat-icon>checklist</mat-icon></button></a>
-                <a routerLink="/saved-jobs"><button>Saved Jobs<mat-icon>favorite_border</mat-icon></button></a>
+                <a *ngIf="isVisible" routerLink="/profile"><button>My Profile<mat-icon>person</mat-icon></button></a>
+                <a *ngIf="isVisible" routerLink="/applications"><button>Applications<mat-icon>checklist</mat-icon></button></a>
+                <a *ngIf="isVisible" routerLink="/saved-jobs"><button>Saved Jobs<mat-icon>favorite_border</mat-icon></button></a>
                 <a routerLink="/main-page" class="auth-button" *ngIf="isLoggedIn" (click)="signOut()"><button>Sign Out<mat-icon>logout</mat-icon></button></a>
               </div>
             </li>
@@ -54,14 +56,70 @@
           </mat-select>
         </mat-form-field>
         <button>Search<mat-icon>search</mat-icon></button>
-        <button (click)="toogleExpandValue()">Detailed Search<mat-icon>filter_list</mat-icon></button>
+        <button (click)="toggleExpandValue()">Detailed Search<mat-icon>filter_list</mat-icon></button>
       </div>
+      
     </div>
 </header>
+
+
+<div *ngIf="isJobBoardOpen" (click)="onBackdropClick($event)">
+  <div class="job-post-block">
+    <div class="board">
+      <h1>Create Job <mat-icon>work</mat-icon></h1>
+      <div class="company-name"><mat-icon>apartment</mat-icon><b>{{currentUser?.user.company_name}}</b></div>
+      <hr>
+      <h3>Job Description:</h3>
+      <textarea [(ngModel)]="jobDescription" name="aboutjob" id="aboutjob" placeholder="About the job" rows="10" cols="50" required></textarea>
+      <h3>Job title / Role:</h3>
+      <mat-form-field>
+      <mat-label>Job Type</mat-label>
+      <mat-select [(ngModel)]="jobRole">
+          <mat-option *ngFor="let role of this.jobsService.jobRoles" [value]="role">{{role.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <hr>
+    <h3>Requirements:</h3>
+      <mat-form-field>
+        <mat-label>Education</mat-label>
+        <mat-select [(ngModel)]="jobEducation">
+            <mat-option *ngFor="let education of this.jobsService.educations" [value]="education">{{education.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select [(ngModel)]="jobEmployment">
+            <mat-option *ngFor="let employment of this.jobsService.employments" [value]="employment">{{employment.name}}</mat-option>
+        </mat-select>
+      </mat-form-field> 
+      <mat-form-field>
+        <mat-label>Experience</mat-label>
+        <mat-select [(ngModel)]="jobExperience">
+            <mat-option *ngFor="let experience of this.jobsService.experiences" [value]="experience">{{experience.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>   
+      <mat-form-field>
+        <mat-label>Location</mat-label>
+        <mat-select [(ngModel)]="jobLocation">
+            <mat-option *ngFor="let location of this.jobsService.locations" [value]="location">{{location.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="error-message" *ngIf="isAnyFieldsEmpty">
+        Please fill in all fields!
+      </div>
+      <div class="bottom-buttons">
+        <button type="button" (click)="createJob()">Post Job</button>
+        <mat-icon (click)="isJobBoardOpen = false">close</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <main [@routeAnimations]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>
+
 
 <footer class="footer">
     <div class="footer-container">

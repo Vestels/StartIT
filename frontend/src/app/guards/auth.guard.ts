@@ -26,3 +26,15 @@ export const authRedirectGuard: CanActivateFn = () => {
     return true;
   }
 };
+
+export const employerRedirectGuard: CanActivateFn = () => {
+  const currentUser = JSON.parse(localStorage.getItem('User') || '{}');
+  const router = inject(Router);
+
+  if (currentUser && currentUser.company_name) {
+    router.navigate(['/main-page']);
+    return false;
+  } else {
+    return true;
+  }
+};

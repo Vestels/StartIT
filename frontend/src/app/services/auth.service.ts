@@ -9,12 +9,18 @@ export class AuthService {
   private apiBaseUrl = 'http://localhost:3000/api'
   public isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   public isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  private currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('User') || '{}'));
+  public currentUser$ = this.currentUserSubject.asObservable();
+  
 
   constructor(private http: HttpClient) { }
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('Bearer Token')
-    return !!token
+    if (token) {
+      return true;
+    }
+    return false;
   }
 
   register( data: {
@@ -32,9 +38,11 @@ export class AuthService {
     return this.http.post(`${this.apiBaseUrl}/users/login`, data)
   }
 
-  loginUser(token: string): void {
+  loginUser(token: string, user: any): void {
     localStorage.setItem('Bearer Token', token);
+    localStorage.setItem('User', JSON.stringify(user));
     this.isLoggedInSubject.next(true);
+    this.currentUserSubject.next(user);
   }
 
   signOut(): void {
@@ -42,6 +50,11 @@ export class AuthService {
     localStorage.clear();
     console.log('localStorage after clear:', localStorage);
     this.isLoggedInSubject.next(false);
+    this.currentUserSubject.next(null);
+  }
+
+  getCurrentUser(): any {
+    return this.currentUserSubject.value;
   }
 
 }

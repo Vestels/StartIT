@@ -10,6 +10,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
+
   getCurrentUser(): Observable<any> {
     const token = localStorage.getItem('Bearer Token');
     const headers = new HttpHeaders({

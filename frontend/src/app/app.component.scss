@@ -1,3 +1,109 @@
+.job-post-block {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.board {
+  position: absolute;
+  width: 50%;
+  max-height: 500px;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #0a9396 #fff;
+
+  .company-name {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  textarea {
+    resize: none;
+    padding: 1rem;
+    min-height: 150px;
+    font-size: 1.1rem;
+  }
+
+  hr {
+    width: 100%;
+    color: #0a9396;
+  }
+
+  .error-message {
+    width: 100%;
+    color: #056d6e;
+    padding: 1rem;
+  }
+
+  .bottom-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1rem;
+
+
+    button {
+      background-color: transparent;
+      outline: none;
+      padding: 1rem;
+      text-transform: uppercase;
+      border: 5px solid #284b63;
+      cursor: pointer;
+      color: #284b63;
+      overflow: hidden;
+      position: relative;
+      transition: color 0.4s ease;
+      z-index: 1;
+    }
+    
+    button:hover {
+      color: #fff;
+    }
+    
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #284b63;
+      transition: transform 0.4s ease;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      z-index: -1;
+    }
+
+    button:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+  }
+
+  mat-icon {
+    cursor: pointer;
+    color: #0a9396;
+  }
+}
+
 main {
   position: relative;
   display: flex;
@@ -7,7 +113,7 @@ main {
 
 header {
   position: relative;
-  z-index: 999;
+  z-index: 10;
 }
 
 nav {
@@ -61,6 +167,8 @@ li {
 ul {
   display: flex;
   flex-direction: row;
+  justify-content: end;
+  min-width: 35%;
 }
 
 .hamburger-menu {

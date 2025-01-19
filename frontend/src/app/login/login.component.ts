@@ -30,10 +30,7 @@ export class LoginComponent {
       this.authService.login(data).subscribe(
         (response) => {
           console.log('Successfully logged in.', response);
-          localStorage.setItem('Bearer Token', response.token);
-          localStorage.setItem('User', JSON.stringify(response.user));
-          this.authService.loginUser(response.token)
-          this.appComponent.currentUser = response.user
+          this.authService.loginUser(response.token, response.user);
           this.clearForm();
           this.router.navigate(['/jobs']);
         },
