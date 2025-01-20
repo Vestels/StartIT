@@ -18,7 +18,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.get<any>(`${this.apiBaseUrl}/me`, { headers });
+    return this.http.get<any>(`${this.apiBaseUrl}/profile/me`, { headers });
   }
 
   updateUserProfile(updates: any): Observable<any> {
@@ -27,7 +27,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.patch<any>(`${this.apiBaseUrl}/me`, updates, { headers });
+    return this.http.patch<any>(`${this.apiBaseUrl}/profile/me`, updates, { headers });
   }
 
   deleteExperience(experienceId: string): Observable<any> {
@@ -36,7 +36,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.delete<any>(`${this.apiBaseUrl}/experience/${experienceId}`, { headers });
+    return this.http.delete<any>(`${this.apiBaseUrl}/profile/experience/${experienceId}`, { headers });
   }
 
   deleteLanguage(languageId: string): Observable<any> {
@@ -45,7 +45,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.delete<any>(`${this.apiBaseUrl}/language/${languageId}`, { headers });
+    return this.http.delete<any>(`${this.apiBaseUrl}/profile/language/${languageId}`, { headers });
   }
 
   deleteEducation(educationId: string): Observable<any> {
@@ -54,7 +54,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.delete<any>(`${this.apiBaseUrl}/education/${educationId}`, { headers });
+    return this.http.delete<any>(`${this.apiBaseUrl}/profile/education/${educationId}`, { headers });
   }
 
   deleteSkill(skillId: string): Observable<any> {
@@ -63,7 +63,7 @@ export class UsersService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     })
-    return this.http.delete<any>(`${this.apiBaseUrl}/skill/${skillId}`, { headers });
+    return this.http.delete<any>(`${this.apiBaseUrl}/profile/skill/${skillId}`, { headers });
   }
   
 }
