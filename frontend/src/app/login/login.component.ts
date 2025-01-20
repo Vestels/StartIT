@@ -29,7 +29,6 @@ export class LoginComponent {
       };
       this.authService.login(data).subscribe(
         (response) => {
-          console.log('Successfully logged in.', response);
           this.authService.loginUser(response.token, response.user);
           this.clearForm();
           this.router.navigate(['/jobs']);

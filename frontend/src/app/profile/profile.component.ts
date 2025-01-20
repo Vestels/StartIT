@@ -57,7 +57,6 @@ export class ProfileComponent implements OnInit {
         this.initialEducations = _.cloneDeep(user.userEducations);
         this.skills = user.userSkills;
         this.initialSkills = _.cloneDeep(user.userSkills);
-        console.log('Current user:', this.currentUser);
 
         if (localStorage.getItem('scrollToTop') === 'true') {
           localStorage.removeItem('scrollToTop');
@@ -254,7 +253,6 @@ export class ProfileComponent implements OnInit {
       this.usersService.updateUserProfile(updates).subscribe({
         next: (user) => {
           this.currentUser = user;
-          console.log('Updated user:', this.currentUser);
           localStorage.setItem('User', JSON.stringify(user));
           this.appComponent.currentUser = this.currentUser;
           localStorage.setItem('scrollToTop', 'true');
@@ -273,7 +271,6 @@ export class ProfileComponent implements OnInit {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.fileName = input.files[0].name;
-      console.log('Selected file:', input.files[0]);
     } else {
       this.fileName = null;
     }

@@ -46,9 +46,7 @@ export class AuthService {
   }
 
   signOut(): void {
-    console.log('Signing out...');
     localStorage.clear();
-    console.log('localStorage after clear:', localStorage);
     this.isLoggedInSubject.next(false);
     this.currentUserSubject.next(null);
   }

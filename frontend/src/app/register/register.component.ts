@@ -61,8 +61,6 @@ export class RegisterComponent {
       }
       this.authService.register(data).subscribe(
         (response) => {
-          console.log('Registration sussessfull.', response);
-          localStorage.setItem('Bearer Token', response.token)
           this.clearForm()
           this.router.navigate(['/login'])
         },

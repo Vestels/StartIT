@@ -24,7 +24,6 @@ export class JobsComponent implements OnInit {
       next: (data) => {
         this.jobs = data;
         this.isLoading = false;
-        console.log('Jobs', this.jobs);
       },
       error: (err) => {
         console.error('Error fetching jobs', err);

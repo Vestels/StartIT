@@ -88,10 +88,8 @@ export class AppComponent implements OnInit {
   }
 
   signOut(): void {
-    console.log('Calling signOut...');
     this.authService.signOut();
     this.isVisible = true;
-    console.log('User signed out');
   }
 
   createJob(): void {
@@ -111,11 +109,8 @@ export class AppComponent implements OnInit {
     job.Experience = this.jobExperience.id;
     job.Education = this.jobEducation.id;
     
-    console.log('Creating job...', job);
-
     this.jobsService.createJob(job).subscribe({
       next: (data) => {
-        console.log('Job created', data);
         this.isAnyFieldsEmpty = false;
         this.closeJobBoard();
         window.location.reload()
