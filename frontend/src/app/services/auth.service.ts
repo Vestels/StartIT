@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject  } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiBaseUrl = 'http://localhost:3000/api'
+  private apiBaseUrl = environment.apiBaseUrl
   public isLoggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   public isLoggedIn$ = this.isLoggedInSubject.asObservable();
   private currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('User') || '{}'));
